@@ -1119,7 +1119,7 @@
       {:cljs-base [(str (util/output-directory opts) File/separator "cljs_base.js")]}
       modules)))
 
-(defn modules->module-graph [modules]
+(defn modules->module-infos [modules]
   (let [ret {:cljs-base []}]
     (reduce-kv
       (fn [ret k {:keys [depends-on] :or {depends-on []}}]
