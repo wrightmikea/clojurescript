@@ -1337,6 +1337,11 @@
              "unreachable")
           "cljs-2104"))))
 
+(deftest test-cljs-2113
+  (testing "nth on sequences with negative index should fail"
+      (is (= :fail (try (nth (range 2) -2) (catch js/Error e :fail))))
+      (is (= :fail (try (nth (seq [3 4]) -2) (catch js/Error e :fail))))))
+
 (comment
   ;; ObjMap
   ;; (let [ks (map (partial str "foo") (range 500))

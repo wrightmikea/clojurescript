@@ -1760,8 +1760,9 @@ reduces them without incurring seq initialization"
   in O(n) time, for sequences."
   ([coll n]
     (cond
-      (not (number? n))
-      (throw (js/Error. "Index argument to nth must be a number"))
+      (or (not (number? n))
+          (neg? n))
+      (throw (js/Error. "Index argument to nth must be a positive number"))
 
       (nil? coll)
       coll
